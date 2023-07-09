@@ -36,7 +36,7 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String action = request.getParameter("action");
         if ("reset".equals(action)) {
-            // Сбрасываем значения счетчиков
+           
             maleCount.set(0);
             femaleCount.set(0);
             youthCount.set(0);
@@ -44,13 +44,13 @@ public class HelloServlet extends HttpServlet {
 
             response.sendRedirect(request.getContextPath() + "/index.jsp"); // Перенаправляем обратно на страницу опроса
         } else if ("showResults".equals(action)) {
-            // Устанавливаем значения счетчиков в атрибуты запроса
+
             request.setAttribute("maleCount", maleCount.get());
             request.setAttribute("femaleCount", femaleCount.get());
             request.setAttribute("youthCount", youthCount.get());
             request.setAttribute("adultCount", adultCount.get());
 
-            // Перенаправляем на страницу с результатами
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("/results.jsp");
             dispatcher.forward(request, response);
         } else {
